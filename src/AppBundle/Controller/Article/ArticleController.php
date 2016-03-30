@@ -21,6 +21,8 @@ class ArticleController extends Controller
 	{
 		$tag= $request->query->get('tag');
 		return new Response('Article avec l\'id '.$id.' avec le tag : '.$tag);
+
+
 	}
 
 	/**

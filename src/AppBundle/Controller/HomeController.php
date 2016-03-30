@@ -13,6 +13,20 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return new Response('Hello World ! ');
+        $name = 'Symfony 3';
+
+        $tutorials = [
+            'php POO',
+            'Laravel',
+            'Symfony',
+            'Wordpress',
+            'Prestashop',
+        ];
+        return $this->render('AppBundle:Home:index.html.twig', [
+            'name'      => $name,
+            'tutorials' => $tutorials,
+        ]);
     }
+
+
 }

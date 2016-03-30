@@ -1,0 +1,24 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent () ~ ' - Home' }}{#rajoute home à la fin du title#}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}{#comprend le contenu déjà indiqué dans le blody#}
+    <h1>Cours de {{ name }}</h1>
+
+    <p>Liste de tutoriels : </p>
+        <ul>
+            {% for tutorial in tutorials %} {#pour un objet dans une liste d'objet#}
+                <li>{{ tutorial }}</li>
+            {% endfor %}
+        </ul>
+
+{% endblock %}
+{% block endbody %}
+{% endblock %}
