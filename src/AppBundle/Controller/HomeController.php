@@ -13,14 +13,25 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
+        $antispam = $this->get('antispam'); #récupération d'une class#
+        dump($antispam->isSpam('RRRRRRRRRRRRRR'));die;
+
         $name = 'Symfony 3';
 
         $tutorials = [
-            'php POO',
-            'Laravel',
-            'Symfony',
-            'Wordpress',
-            'Prestashop',
+            [
+                'id'=> 2,
+                'name'=> 'Symfony 2'
+            ],
+            [
+                'id' => 5,
+                'name' => 'Laravel'
+            ],
+            [
+                'id' => 9,
+                'name' => 'Wordpress'
+            ],
+
         ];
         return $this->render('AppBundle:Home:index.html.twig', [
             'name'      => $name,

@@ -1,0 +1,11 @@
+
+{% block body %}
+<p>Liste de tutoriels : </p>
+<ul>
+    {% for tutorial in tutorials %} {#pour un objet dans une liste d'objet#}
+        <li>ID : {{ tutorial.id }}<br/> Nom : {{ tutorial.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+{% block endbody %}
+{% endblock %}
