@@ -19,9 +19,8 @@ class ArticleController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function showAction($id, Request $request)
+	public function showAction($id)
 	{
-		$tag= $request->query->get('tag');
 		#faire la condition pour afficher le tag de l'article
 
 		$em = $this->getDoctrine()->getManager();
@@ -40,20 +39,22 @@ class ArticleController extends Controller
 	/**
 	 * @Route("/list",name="article_list")
 	 */
-	public function listAction()
+	public function listAction(Request $request)
 	{
+		$tag= $request->query->get('tag');
+
 		$em = $this->getDoctrine()->getManager();
 		$articleRepository = $em->getRepository('AppBundle:Article\Article');
 
-		$author = 'moi';
 
 		$articles = $articleRepository->findBy([
-			'author' => $author
+			'tag' => $tag
 		]);
 
 
-		return $this->redirectToRoute('article_list');
-	}
+		return $this->render('AppBundle:Article:Partial:list.html.twig', [
+			'tag' => $articles,
+		]);	}
 
 
 	/**

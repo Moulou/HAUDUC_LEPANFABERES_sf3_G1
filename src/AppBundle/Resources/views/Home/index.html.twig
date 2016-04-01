@@ -15,9 +15,9 @@
     <ul>
         {% for article in articles %} {#pour un objet dans une liste d'objet#}
             <li>
-                <h3>{% if article.title is not null %}{{ article.title }} {% endif %}</h3
-                <p>Par : {{ article.author }}</p>
-                <p>Le : {{ article.createdAt|date('md/d/Y H:i') }}</p>
+                <h3>{% if article.title is not null %}{{ article.title }} {% endif %}</h3>
+                <p>Le : {{ article.createdAt|date('md/d/Y H:i') }}, tags : <a href="{{ path('article_list', {'tag' : article.tag }) }}">{{ article.tag }}</a>
+                </p>
             </li>
 
             <a href=" {{ path('article_show', {'id' : article.id }) }}" class="btn-success btn">Voir</a>
