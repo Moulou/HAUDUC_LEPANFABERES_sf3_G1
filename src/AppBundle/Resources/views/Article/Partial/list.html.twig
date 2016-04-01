@@ -1,9 +1,15 @@
 
 {% block body %}
-<p>Liste de tutoriels : </p>
+<h2>Articles : </h2>
 <ul>
-    {% for tutorial in tutorials %} {#pour un objet dans une liste d'objet#}
-        <li>ID : {{ tutorial.id }}<br/> Nom : {{ tutorial.name }}</li>
+    {% for article in articles %} {#pour un objet dans une liste d'objet#}
+        <li>
+            <h3>{% if article.title is not null %}{{ article.title }} {% endif %}</h3>
+            <p>{{ article.content }}</p>
+            <p>Par : {{ article.author }}</p>
+            <p>Le : {{ article.createdAt|date('md/d/Y H:i') }}</p>
+            <a href="{{ path('article_list', {'tag' : article.tag }) }}">{{ article.tag }}</a>
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}

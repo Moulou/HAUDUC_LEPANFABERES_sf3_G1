@@ -2,6 +2,30 @@ body {
     background-color: #313131;
 }
 
-h1, p, li{
+h3{
+    color: #dd4444;
+}
+h1, h2, p, li{
     color: white;
+}
+
+label{
+    color: white;
+}
+
+input, textarea{
+    margin-left: 25%;
+    width:50%;
+    border-color:inherit;
+    padding: 4px;
+
+}
+
+button{
+    margin-left: 25%;
+    width: 50%;
+    text-align: center;
+    background-color: #dd4444;
+    border: 0px inherit;
+    color:white;
 }

@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    {{ parent () ~ ' - Ajouter' }}{#rajoute ajouter à la fin du title#}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h2>Ajouter un article</h2>
+
+    <div class="articles-form-container">
+        {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_errors(form.title) }}
+                {{ form_widget(form.title, {'attr' : {'placeholder' : 'Entrez le titre'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.content) }}
+                {{ form_widget(form.content, {'attr' : {'placeholder' : 'Ecrivez votre article'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.tag) }}
+                {{ form_widget(form.tag, {'attr' : {'placeholder' : 'Assignez un tag à votre article'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.author) }}
+                {{ form_widget(form.author, {'attr' : {'placeholder' : 'Votre nom'}}) }}
+            </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block endbody %}
+{% endblock %}

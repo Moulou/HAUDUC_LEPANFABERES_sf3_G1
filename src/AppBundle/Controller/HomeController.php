@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/",name="/")
      */
     public function indexAction()
     {
@@ -42,7 +42,7 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $articleRepository = $em->getRepository('AppBundle:Article\Article');
 
-        $article = new Article();
+        /*$article = new Article();
         $article
                 ->setTitle('Titre 2.0')
                 ->setContent('blabla')
@@ -51,9 +51,15 @@ class HomeController extends Controller
             ;
 
         $em->persist($article);#met en mémoire l'article
-        $em->flush();#envois l'article dans la base
+        $em->flush();#envois l'article dans la base*/
 
-        return new Response('Article created');
+        $articles = $articleRepository->findAll();
+
+        return $this->render('AppBundle:Home:index.html.twig',[
+            'articles' => $articles,
+
+        ]);
+
 
 
     }
