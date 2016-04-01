@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block title %}
-    {{ parent () ~ ' - Home' }}{#rajoute home à la fin du title#}
+    {{ parent () ~ ' - Article' }}{#rajoute home à la fin du title#}
 {% endblock %}
 
 {% block body %}
@@ -15,12 +15,12 @@
     <ul>
         {% for article in articles %} {#pour un objet dans une liste d'objet#}
             <li>
-                <h3>{% if article.title is not null %}{{ article.title }} {% endif %}</h3
+                <h3>{% if article.title is not null %}{{ article.title }} {% endif %}</h3>
+                <p>{{ article.content }}</p>
                 <p>Par : {{ article.author }}</p>
+                <a href="{{ path('article_list', {'tag' : article.tag }) }}">{{ article.tag }}</a>
                 <p>Le : {{ article.createdAt|date('md/d/Y H:i') }}</p>
             </li>
-
-            <a href=" {{ path('article_show', {'id' : article.id }) }}" class="btn-success btn">Voir</a>
         {% endfor %}
     </ul>
 

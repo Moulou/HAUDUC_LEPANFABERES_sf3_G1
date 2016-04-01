@@ -24,8 +24,16 @@ class ArticleController extends Controller
 		$tag= $request->query->get('tag');
 		#faire la condition pour afficher le tag de l'article
 
-		return new Response('Article avec l\'id '.$id.' avec le tag : '.$tag);
+		$em = $this->getDoctrine()->getManager();
+		$articleRepository = $em->getRepository('AppBundle:Article\Article');
 
+		$articles = $articleRepository->findBy([
+			'id' => $id
+		]);
+
+		return $this->render('AppBundle:Article:show.html.twig', [
+			'articles' => $articles,
+		]);
 
 	}
 
@@ -43,10 +51,8 @@ class ArticleController extends Controller
 			'author' => $author
 		]);
 
-		dump($articles);
 
-		return new Response('List of article');
-
+		return $this->redirectToRoute('article_list');
 	}
 
 
@@ -75,7 +81,7 @@ class ArticleController extends Controller
 		$em->persist($form->getData());#met en mémoire l'article
 		$em->flush();#envois l'article dans la base
 
-			return $this->redirectToRoute('article_list');
+			return $this->redirectToRoute('/');
 
 	}
 
