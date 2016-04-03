@@ -9,6 +9,12 @@ h1, h2, p, li{
     color: white;
 }
 
+h4{
+    color: yellow;
+    font-size: 40px;
+    float: left;
+    padding: 1%;
+}
 label{
     color: white;
 }
@@ -28,4 +34,9 @@ button{
     background-color: #dd4444;
     border: 0px inherit;
     color:white;
+}
+
+.background{
+    background-color: dimgray;
+    width: auto;
 }
