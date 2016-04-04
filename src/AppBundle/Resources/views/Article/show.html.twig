@@ -19,7 +19,7 @@
                 <h3>{% if article.title is not null %}{{ article.title }} {% endif %}</h3>
                 <p>{{ article.content }}</p>
                 <p>Par : {{ article.author }}</p>
-                <p> tag : <a href="{{ path('article_list', {'tag' : article.tag }) }}">{{ article.tag }}</a></p>
+                <p> tag : {{ article.tag }}</p>
                 <p>Le : {{ article.createdAt|date('md/d/Y H:i') }}</p>
             </li>
         {% endfor %}
