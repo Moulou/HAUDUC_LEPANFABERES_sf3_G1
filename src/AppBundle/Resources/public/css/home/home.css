@@ -10,13 +10,17 @@ h1, h2, p, li{
 }
 
 h4{
-    color: yellow;
+    color: lightseagreen;
     font-size: 40px;
     float: left;
     padding: 1%;
 }
 label{
     color: white;
+}
+
+li{
+    list-style-type:none;
 }
 
 input, textarea{
@@ -32,11 +36,11 @@ button{
     width: 50%;
     text-align: center;
     background-color: #dd4444;
-    border: 0px inherit;
+    border: 0 inherit;
     color:white;
 }
 
 .background{
-    background-color: dimgray;
+    background-color: white;
     width: auto;
 }
