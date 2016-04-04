@@ -1,12 +1,12 @@
 body {
-    background-color: #313131;
+    background-color: #fff;
 }
 
 h3{
     color: #dd4444;
 }
 h1, h2, p, li{
-    color: white;
+    color: #313131;
 }
 
 h4{
@@ -23,7 +23,7 @@ input, textarea{
     margin-left: 25%;
     width:50%;
     border-color:inherit;
-    padding: 4px;
+    padding: 6px;
 
 }
 
