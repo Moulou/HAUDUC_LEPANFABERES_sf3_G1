@@ -13,7 +13,7 @@ class ArticleController extends Controller
 
 
 	/**
-	 * @Route("/{id}", requirements={"id" = "\d+"}, name="article_show")
+	 * @Route("/show/{id}", requirements={"id" = "\d+"}, name="article_show")
 	 *
 	 * @param $id
 	 *
@@ -21,7 +21,6 @@ class ArticleController extends Controller
 	 */
 	public function showAction($id)
 	{
-		#faire la condition pour afficher le tag de l'article
 
 		$em = $this->getDoctrine()->getManager();
 		$articleRepository = $em->getRepository('AppBundle:Article\Article');
@@ -41,18 +40,44 @@ class ArticleController extends Controller
 	 */
 	public function listAction(Request $request)
 	{
-		$tag= $request->query->get('tag');
+
+		$em = $this->getDoctrine()->getManager();
+
+
+		$articleRepository = $em->getRepository('AppBundle:Article\Article');
+
+
+		$articles = $articleRepository->findAll();
+
+		return $this->render('AppBundle:Home:index.html.twig', [
+			'articles' => $articles,
+
+		]);
+
+
+
+	}
+
+	/**
+	 * @Route("/list/tag",name="article_tag")
+	 */
+	public function selectAction(Request $request){
 
 		$em = $this->getDoctrine()->getManager();
 		$articleRepository = $em->getRepository('AppBundle:Article\Article');
 
+		$tag = $request->query->get('tag');
 
 		$articles = $articleRepository->findBy(array('tag' => $tag));
 
-
 		return $this->render('AppBundle:Home:index.html.twig', [
 			'articles' => $articles,
-		]);	}
+
+		]);
+
+
+	}
+
 
 
 
