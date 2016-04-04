@@ -47,14 +47,13 @@ class ArticleController extends Controller
 		$articleRepository = $em->getRepository('AppBundle:Article\Article');
 
 
-		$articles = $articleRepository->findBy([
-			'tag' => $tag
-		]);
+		$articles = $articleRepository->findBy(array('tag' => $tag));
 
 
-		return $this->render('AppBundle:Article:Partial:list.html.twig', [
-			'tag' => $articles,
+		return $this->render('AppBundle:Home:index.html.twig', [
+			'articles' => $articles,
 		]);	}
+
 
 
 	/**
@@ -89,5 +88,6 @@ class ArticleController extends Controller
 		return $this->render('AppBundle:Article:new.html.twig',[
 			'form' => $form->createView()
 		]);
+
 	}
 }
